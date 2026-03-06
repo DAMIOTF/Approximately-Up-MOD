@@ -27,6 +27,7 @@ These screenshots show what the mod adds in the game:
 4. Go to the `Mods` folder (create it if it does not exist).
 5. Copy the mod `.dll` files into the `Mods` folder.
 6. Start the game.
+7. To run the mod, click F10
 
 ## File Structure Check
 
@@ -41,6 +42,7 @@ These images show how your game files should look after installation:
 - Check game and MelonLoader versions if you have issues.
 
 - If you have any problems, please contact me on discord: dmtftf.
+
 
 
 
