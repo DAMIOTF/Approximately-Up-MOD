@@ -1,12 +1,11 @@
 # Approximately Up MOD
 
-status as of March 6: WORKING
-game [version](https://steamdb.info/app/4396220/history/?changeid=34252973)
-A simple mod for your game using MelonLoader.
+- status as of March 6: WORKING
+- game [version](https://steamdb.info/app/4396220/history/?changeid=34252973)
 
 ## What this mod does
 
-This mod changes gameplay behavior to add the "Approximately Up" feature.
+This mod adds items that are available in the game files but are locked.
 
 ## Screenshots (In Game)
 
@@ -42,3 +41,4 @@ These images show how your game files should look after installation:
 - Check game and MelonLoader versions if you have issues.
 
 - If you have any problems, please contact me on discord: dmtftf.
+
