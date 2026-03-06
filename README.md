@@ -21,12 +21,12 @@ These screenshots show what the mod adds in the game:
 - Install (or update) MelonLoader using this [official guide](https://github.com/LavaGang/MelonLoader.Installer/blob/master/README.md#how-to-install-re-install-or-update-melonloader).
 
 ## Installation
-
-1. Install MelonLoader first (link above).
-2. Open your game folder.
-3. Go to the `Mods` folder (create it if it does not exist).
-4. Copy the mod `.dll` files into the `Mods` folder.
-5. Start the game.
+1. Download MOD -> [Download Link](https://github.com/DAMIOTF/Approximately-Up-MOD/releases/download/Release/Mod.zip) or use [releases](https://github.com/DAMIOTF/Approximately-Up-MOD/releases/tag/Release)
+2. Install MelonLoader first (link above).
+3. Open your game folder.
+4. Go to the `Mods` folder (create it if it does not exist).
+5. Copy the mod `.dll` files into the `Mods` folder.
+6. Start the game.
 
 ## File Structure Check
 
@@ -41,6 +41,7 @@ These images show how your game files should look after installation:
 - Check game and MelonLoader versions if you have issues.
 
 - If you have any problems, please contact me on discord: dmtftf.
+
 
 
 
