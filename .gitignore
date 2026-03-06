@@ -1,0 +1,22 @@
+# Build outputs
+bin/
+obj/
+
+# IDE and user-specific
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet restore cache
+packages/
+
+# Local/decompiled game files that should not be tracked
+UniverseLib.Mono.dll
+ZDEKOMPILOWANE Assembly-CSharp/
+
+# MelonLoader runtime files
+MelonLoader/
+UserData/
+Logs/
