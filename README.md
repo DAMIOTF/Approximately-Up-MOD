@@ -39,6 +39,7 @@ These images show how your game files should look after installation:
 
 ## Notes
 
+- If it doesn't work, you can't see the gui, copy the entire contents of the mods folder to userlib
 - If the mod does not load, make sure MelonLoader is installed correctly.
 - Check game and MelonLoader versions if you have issues.
 
@@ -92,5 +93,6 @@ dotnet msbuild .\ApproximatelyUpMOD.csproj /t:Build /p:Configuration=Release /p:
 ```
 
 Compiled files are generated in `bin/Release`.
+
 
 
