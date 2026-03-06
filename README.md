@@ -1,13 +1,11 @@
 # Approximately Up MOD
 
-status as of March 6: WORKING  
-game [version](https://steamdb.info/app/4396220/history/?changeid=34252973)
-
-A simple mod for your game using MelonLoader.
+- status as of March 6: WORKING
+- game [version](https://steamdb.info/app/4396220/history/?changeid=34252973)
 
 ## What this mod does
 
-This mod changes gameplay behavior to add the "Approximately Up" feature.
+This mod adds items that are available in the game files but are locked.
 
 ## Screenshots (In Game)
 
@@ -24,11 +22,13 @@ These screenshots show what the mod adds in the game:
 
 ## Installation
 
-1. Install MelonLoader first (link above).
-2. Open your game folder.
-3. Go to the `Mods` folder (create it if it does not exist).
-4. Copy the mod `.dll` files into the `Mods` folder.
-5. Start the game.
+1. Download MOD -> [Download Link](https://github.com/DAMIOTF/Approximately-Up-MOD/releases/download/Release/Mod.zip) or use [releases](https://github.com/DAMIOTF/Approximately-Up-MOD/releases/tag/Release)
+2. Install MelonLoader first (link above).
+3. Open your game folder.
+4. Go to the `Mods` folder (create it if it does not exist).
+5. Copy the mod `.dll` files into the `Mods` folder.
+6. Start the game.
+7. To run the mod, click F10
 
 ## File Structure Check
 
@@ -41,32 +41,54 @@ These images show how your game files should look after installation:
 
 - If the mod does not load, make sure MelonLoader is installed correctly.
 - Check game and MelonLoader versions if you have issues.
-- If you have any problems, please contact me on discord: `dmtftf`.
 
-## Source Code Build Guide
+- If you have any problems, please contact me on discord: dmtftf.
 
-This section is for developers who want to build the mod from source.
+## Source Code Compilation Guide
 
-## Dependencies
+## What is required
 
-- Windows + Visual Studio (or Build Tools) with .NET Framework 4.7.2 targeting pack.
-- NuGet (for `Lib.Harmony` restore from `packages.config`).
-- Local game files from Approximately Up Demo:
-- `ApproximatelyUp_Data/Managed` assemblies (for example `Assembly-CSharp.dll`, `UnityEngine*.dll`, `Unity.Entities.dll`, `Unity.Collections.dll`, `Unity.Mathematics.dll`).
-- `MelonLoader/net6/MelonLoader.dll` from the game directory.
-- `UniverseLib.Mono.dll` file available locally.
+- Windows
+- .NET Framework 4.7.2 targeting pack
+- Visual Studio or Build Tools with MSBuild
+- NuGet restore support
+- Local game files from Approximately Up Demo
 
-## Build From Source
+## Required dependencies
 
-1. Clone this repository.
-2. Restore NuGet packages.
-3. Build `ApproximatelyUpMOD.csproj` in Release mode.
-4. Copy `bin/Release/ApproximatelyUpMOD.dll` into the game `Mods` folder.
+From NuGet/Internet:
 
-Example command:
+- `0Harmony.dll` [download](https://www.nuget.org/packages/Lib.Harmony)
+- `UniverseLib.Mono.dll` [download](https://github.com/sinai-dev/UniverseLib/releases)
+
+From game folder (`ApproximatelyUp_Data/Managed`):
+
+- `Assembly-CSharp.dll`
+- `UnityEngine.dll`
+- `UnityEngine.CoreModule.dll`
+- `UnityEngine.InputLegacyModule.dll`
+- `UnityEngine.IMGUIModule.dll`
+- `UnityEngine.TextRenderingModule.dll`
+- `UnityEngine.UI.dll`
+- `UnityEngine.UIModule.dll`
+- `Unity.Collections.dll`
+- `Unity.Entities.dll`
+- `Unity.Mathematics.dll`
+
+From MelonLoader folder:
+
+- `MelonLoader.dll`
+
+## Build steps
+
+1. Restore NuGet packages.
+2. Build `ApproximatelyUpMOD.csproj` in `Release`.
+3. Use output from `bin/Release`.
+
+Example build command:
 
 ```powershell
 dotnet msbuild .\ApproximatelyUpMOD.csproj /t:Build /p:Configuration=Release /p:GameRootDir="D:\SteamLibrary\steamapps\common\Approximately Up Demo" /p:UniverseLibPath="D:\SteamLibrary\steamapps\common\Approximately Up Demo\Mods\UniverseLib.Mono.dll"
 ```
 
-`GameRootDir` and `UniverseLibPath` are build properties so you can point to your own local paths.
+Compiled files are generated in `bin/Release`.
