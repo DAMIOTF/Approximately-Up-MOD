@@ -7,9 +7,9 @@ namespace ApproximatelyUpMod
     {
         private static void Postfix(ref int __result)
         {
-            if (ItemListController.InfiniteAllMaterials && __result < 999)
+            if (ItemListController.EnforceMaterialsAmount && __result < ItemListController.MaterialsAmountOverride)
             {
-                __result = 999;
+                __result = ItemListController.MaterialsAmountOverride;
             }
         }
     }

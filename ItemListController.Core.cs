@@ -19,15 +19,17 @@ namespace ApproximatelyUpMod
         private const bool ShowGuiOnStartup = true;
         private const double StartupShowRetryDelaySeconds = 0.5;
         private const int MaxStartupShowAttempts = 20;
+        internal const int MaxMaterialsAmount = 99999;
+        internal const int DefaultMaterialsAmount = 999;
 
         private static readonly List<ItemEntry> _allItems = new List<ItemEntry>(512);
-        private static readonly Dictionary<EPC_SpaceshipComponent, int> _originalAvailableAmounts = new Dictionary<EPC_SpaceshipComponent, int>(512);
         private static readonly System.Random _rng = new System.Random();
 
         private static ItemListController _activeInstance;
         private static bool _cacheReady;
 
-        public static bool InfiniteAllMaterials;
+        public static int MaterialsAmountOverride = DefaultMaterialsAmount;
+        public static bool EnforceMaterialsAmount;
 
         private bool _isVisible;
         private bool _startupShowPending;
@@ -35,7 +37,6 @@ namespace ApproximatelyUpMod
         private string _lastSceneName = string.Empty;
 
         private double _nextRefreshAt;
-        private double _nextMaterialsSyncAt;
         private double _nextStartupShowAttemptAt;
 
         private int _itemsRevision;
@@ -68,11 +69,6 @@ namespace ApproximatelyUpMod
             if (Time.realtimeSinceStartupAsDouble >= _nextRefreshAt)
             {
                 TryRefreshItems(force: false);
-            }
-
-            if (Time.realtimeSinceStartupAsDouble >= _nextMaterialsSyncAt)
-            {
-                SyncMaterialsState(force: false);
             }
 
             if (_startupShowPending && Time.realtimeSinceStartupAsDouble >= _nextStartupShowAttemptAt)

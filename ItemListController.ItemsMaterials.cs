@@ -1,10 +1,77 @@
 using System;
 using System.Linq;
+using UnityEngine;
 
 namespace ApproximatelyUpMod
 {
     public partial class ItemListController
     {
+        internal void ApplyMaterialsAmountFromUi(string rawValue)
+        {
+            int requestedAmount;
+            if (!TryParseMaterialsAmount(rawValue, out requestedAmount))
+            {
+                ModLog.Warn("Set materials aborted: invalid number. Enter a value from 1 to " + MaxMaterialsAmount + ".");
+                return;
+            }
+
+            ApplyMaterialsAmount(requestedAmount);
+        }
+
+        private static bool TryParseMaterialsAmount(string rawValue, out int amount)
+        {
+            amount = DefaultMaterialsAmount;
+            if (string.IsNullOrWhiteSpace(rawValue))
+            {
+                return false;
+            }
+
+            int parsed;
+            if (!int.TryParse(rawValue.Trim(), out parsed))
+            {
+                return false;
+            }
+
+            amount = Mathf.Clamp(parsed, 1, MaxMaterialsAmount);
+            return true;
+        }
+
+        private void ApplyMaterialsAmount(int amount)
+        {
+            try
+            {
+                var core = Core.Get();
+                if (core == null || core._componentsMap == null || core._componentsMap.Count == 0)
+                {
+                    ModLog.Warn("Set materials aborted: Core/components are not ready.");
+                    return;
+                }
+
+                int updated = 0;
+                foreach (var component in core._componentsMap.Values)
+                {
+                    if (component == null)
+                    {
+                        continue;
+                    }
+
+                    component._availableAmount = amount;
+                    updated++;
+                }
+
+                MaterialsAmountOverride = amount;
+                EnforceMaterialsAmount = true;
+
+                core.RefreshSharedAvailableComponents();
+                core.RefreshPrivateAvailableComponents();
+                ModLog.Info($"Materials set to {amount}. Updated components: {updated}.");
+            }
+            catch (Exception ex)
+            {
+                ModLog.Error("Set materials failed: " + ex);
+            }
+        }
+
         private void TryRefreshItems(bool force)
         {
             _nextRefreshAt = UnityEngine.Time.realtimeSinceStartupAsDouble + (force ? 0.35 : 1.5);
@@ -152,64 +219,5 @@ namespace ApproximatelyUpMod
             }
         }
 
-        private void SyncMaterialsState(bool force)
-        {
-            _nextMaterialsSyncAt = UnityEngine.Time.realtimeSinceStartupAsDouble + (force ? 0.15 : 0.75);
-
-            try
-            {
-                var core = Core.Get();
-                if (core == null || core._componentsMap == null || core._componentsMap.Count == 0)
-                {
-                    return;
-                }
-
-                if (InfiniteAllMaterials)
-                {
-                    foreach (var component in core._componentsMap.Values)
-                    {
-                        if (component == null)
-                        {
-                            continue;
-                        }
-
-                        if (!_originalAvailableAmounts.ContainsKey(component))
-                        {
-                            _originalAvailableAmounts[component] = component._availableAmount;
-                        }
-
-                        if (component._availableAmount < 999)
-                        {
-                            component._availableAmount = 999;
-                        }
-                    }
-
-                    core.RefreshSharedAvailableComponents();
-                    core.RefreshPrivateAvailableComponents();
-                    return;
-                }
-
-                if (_originalAvailableAmounts.Count == 0)
-                {
-                    return;
-                }
-
-                foreach (var kv in _originalAvailableAmounts)
-                {
-                    if (kv.Key != null)
-                    {
-                        kv.Key._availableAmount = kv.Value;
-                    }
-                }
-
-                _originalAvailableAmounts.Clear();
-                core.RefreshSharedAvailableComponents();
-                core.RefreshPrivateAvailableComponents();
-            }
-            catch (Exception ex)
-            {
-                ModLog.Warn("Sync materials failed: " + ex.Message);
-            }
-        }
     }
 }
