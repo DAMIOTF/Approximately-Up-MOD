@@ -36,7 +36,7 @@ namespace ApproximatelyUpMod
         {
             try
             {
-                var harmony = new Harmony("com.ApproximatelyUp.Mod");
+                var harmony = new HarmonyLib.Harmony("com.ApproximatelyUp.Mod");
                 harmony.PatchAll();
                 ModLog.Info("Harmony patches initialized.");
 
