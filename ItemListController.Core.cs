@@ -43,7 +43,6 @@ namespace ApproximatelyUpMod
 
         private UIBase _uiBase;
         private FlatModPanel _panel;
-        private Text _watermark;
 
         private bool _prevCursorVisible;
         private CursorLockMode _prevLockMode;

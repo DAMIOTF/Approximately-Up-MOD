@@ -68,7 +68,6 @@ namespace ApproximatelyUpMod
             _uiBase = UniversalUI.RegisterUI("ApproximatelyUpMOD_UI", () => { });
             _panel = new FlatModPanel(_uiBase, this);
             _panel.SetActive(false);
-            BuildWatermark();
             ConfigureCanvasForVisibility();
             ModLog.Info("GUI panel created.");
         }
@@ -92,33 +91,6 @@ namespace ApproximatelyUpMod
             }
 
             ModLog.Info("Canvas visibility override applied to UniverseLib UI.");
-        }
-
-        private void BuildWatermark()
-        {
-            if (_uiBase == null || _watermark != null)
-            {
-                return;
-            }
-
-            _watermark = UIFactory.CreateLabel(
-                _uiBase.RootObject,
-                "Watermark",
-                "GUI active at startup. F10 toggles panel.",
-                TextAnchor.UpperRight,
-                new Color(1f, 1f, 1f, 0.25f),
-                true,
-                18);
-            _watermark.raycastTarget = false;
-
-            RectTransform rect = _watermark.rectTransform;
-            rect.anchorMin = new Vector2(1f, 1f);
-            rect.anchorMax = new Vector2(1f, 1f);
-            rect.pivot = new Vector2(1f, 1f);
-            rect.anchoredPosition = new Vector2(-10f, -8f);
-            rect.sizeDelta = new Vector2(390f, 30f);
-
-            UIFactory.SetLayoutElement(_watermark.gameObject, ignoreLayout: true);
         }
 
         private void ToggleVisibility()
