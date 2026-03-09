@@ -47,7 +47,8 @@ Use the **Items** section of the panel to browse and assign them to your hotbar 
 
 ![In-game screenshot 1](./Images/1.png)
 ![In-game screenshot 2](./Images/2.png)
-![In-game screenshot 3](./Images/3.png)
+<img width="987" height="921" alt="obraz" src="https://github.com/user-attachments/assets/8705bc2a-eb73-4405-b210-62470ccf0d83" />
+
 
 ---
 
@@ -81,10 +82,6 @@ Approximately Up Demo/
     ├── UniverseLib.Mono.dll
     └── 0Harmony.dll
 ```
-
-![File structure example 1](./Images/4.png)
-<img width="987" height="921" alt="obraz" src="https://github.com/user-attachments/assets/4e36858b-1b98-40ff-9e32-20cc6ca28eed" />
-
 
 ---
 
