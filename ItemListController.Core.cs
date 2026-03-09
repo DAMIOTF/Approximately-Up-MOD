@@ -60,6 +60,8 @@ namespace ApproximatelyUpMod
         private void Update()
         {
             ThrusterPowerSystem.Tick();
+            WirelessTransmitterSystem.Tick();
+            CablePowerSystem.Tick();
             SyncShipTearingOverride();
             BuildingRuntimeOverrides.Tick();
 

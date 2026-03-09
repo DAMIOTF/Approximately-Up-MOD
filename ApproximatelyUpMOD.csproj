@@ -136,6 +136,10 @@
     <!-- Mods\ThrusterPowerMod -->
     <Compile Include="Mods\ThrusterPowerMod\ThrusterPowerSystem.cs" />
     <Compile Include="Mods\ThrusterPowerMod\ThrusterPowerUI.cs" />
+    <!-- Mods\ElectricsMod -->
+    <Compile Include="Mods\ElectricsMod\CablePowerSystem.cs" />
+    <Compile Include="Mods\ElectricsMod\ElectricsUI.cs" />
+    <Compile Include="Mods\ElectricsMod\WirelessTransmitterSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

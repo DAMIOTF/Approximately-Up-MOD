@@ -225,6 +225,9 @@ namespace ApproximatelyUpMod
                 GameObject teleportPlanetsSection = CreateSection(body, string.Empty);
                 BuildTeleportPlanetsSection(teleportPlanetsSection);
 
+                GameObject electricsSection = CreateSection(body, string.Empty);
+                BuildElectricsSection(electricsSection);
+
                 GameObject spacer = UIFactory.CreateUIObject("FooterSpacer", body);
                 UIFactory.SetLayoutElement(spacer, flexibleHeight: 9999, minHeight: 4);
 
@@ -269,6 +272,7 @@ namespace ApproximatelyUpMod
                 }
 
                 RefreshBuildingControls();
+                RefreshElectricsControls();
             }
 
             public void RebuildItems()
