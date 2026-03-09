@@ -21,6 +21,10 @@ ApproximatelyUpMOD.dll
 # CI packaging output
 dist/
 
+# Private documentation notes (keep only README.md)
+*.md
+!README.md
+
 # MelonLoader runtime files
 MelonLoader/
 UserData/
