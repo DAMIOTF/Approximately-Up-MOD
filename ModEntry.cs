@@ -3,7 +3,7 @@ using MelonLoader;
 using System;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(ApproximatelyUpMod.ModEntry), "ApproximatelyUpMod", "2.3.0", "discord: dmtftf")]
+[assembly: MelonInfo(typeof(ApproximatelyUpMod.ModEntry), "ApproximatelyUpMod", "2.4.0", "discord: dmtftf")]
 [assembly: MelonGame(null, null)]
 
 namespace ApproximatelyUpMod
@@ -41,7 +41,6 @@ namespace ApproximatelyUpMod
                 var harmony = new HarmonyLib.Harmony("com.ApproximatelyUp.Mod");
                 harmony.PatchAll();
                 ModLog.Info("Harmony patches initialized.");
-                PatchDiagnostics.LogPatchTargetsAndIl(harmony);
 
                 MelonEvents.OnSceneWasLoaded.Subscribe(OnSceneLoaded);
                 ModLog.Info("Subscribed to scene load events.");

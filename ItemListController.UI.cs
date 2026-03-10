@@ -235,9 +235,6 @@ namespace ApproximatelyUpMod
                 GameObject actionsSection = CreateSection(body, "Actions");
                 BuildActionsSection(actionsSection);
 
-                GameObject buildingSection = CreateSection(body, string.Empty);
-                BuildBuildingSection(buildingSection);
-
                 GameObject thrusterPowerSection = CreateSection(body, string.Empty);
                 BuildThrusterPowerSection(thrusterPowerSection);
 
@@ -288,7 +285,6 @@ namespace ApproximatelyUpMod
                     RebuildThrusterPowerControls();
                 }
 
-                RefreshBuildingControls();
                 RefreshElectricsControls();
             }
 

@@ -63,8 +63,6 @@ namespace ApproximatelyUpMod
             WirelessTransmitterSystem.Tick();
             CablePowerSystem.Tick();
             SyncShipTearingOverride();
-            BuildingRuntimeOverrides.Tick();
-
             if (Input.GetKeyDown(ToggleKey))
             {
                 ModLog.Info("Toggle key pressed (F10).");

@@ -73,8 +73,12 @@ namespace ApproximatelyUpMod
             if (mapPtr == null) return;
 
             float3 snapping = new float3(grid, grid, grid);
-            // With _bounds = 0.02: CheckBox half-extents = 0.5*0.02-0.01 = 0 → no hit → placement allowed.
-            float3 tinyBounds = new float3(0.02f, 0.02f, 0.02f);
+            // NOTE: _bounds is intentionally NOT modified here.
+            // Modifying _bounds would corrupt the placement snapping formula's anchor offset
+            // (the game uses abs(rotate(q, 0.5*_bounds)) as the grid phase anchor), cause parts to
+            // sink into surfaces, and make the rotation gizmo render at near-zero scale.
+            // Collision bypass is handled entirely by the Harmony patches in PlacementCollisionPatch.cs
+            // (CanMountComponentToGaragePos bypass) and BuildingCheckBoxBypassPatch (CheckBox bypass).
 
             int applied = 0;
             for (int i = 0; i < core._spaceshipComponents.Length; i++)
@@ -90,7 +94,7 @@ namespace ApproximatelyUpMod
                 if (!mapPtr->TryGetValue(key, out data)) continue;
 
                 data._snapping = snapping;
-                data._bounds = bypass ? tinyBounds : epc._bounds;
+                // _bounds left at original value (epc._bounds) intentionally.
 
                 // UnsafeHashMap has no set-indexer in this Unity.Collections version;
                 // remove then re-add is the safe overwrite pattern.

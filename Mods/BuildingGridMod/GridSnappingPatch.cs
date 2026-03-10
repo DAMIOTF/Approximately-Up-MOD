@@ -92,6 +92,12 @@ namespace ApproximatelyUpMod
                 ModLog.Info("[BuildingGridMod] Patch executed: GarageGrabber.SetGarageTransform (GridSnapMathPatch)");
             }
 
+            // Cable cells use dedicated 0.125 m snapping — never resnap them.
+            if (em.HasComponent<SCTypeCableCell>(entity))
+            {
+                return;
+            }
+
             if (!em.HasComponent<SCPrefab>(entity))
             {
                 return;
@@ -110,12 +116,18 @@ namespace ApproximatelyUpMod
                 return;
             }
 
+            // Re-snap using the ECS-overridden grid (idempotent safety net).
+            // The game's own Burst code already snapped to this grid via BuildingRuntimeOverrides.
+            // For any 90°-multiple rotation, abs(rotate(q, (g,g,g))) == (g,g,g), so the step is
+            // always uniform and consistent regardless of part orientation.
             quaternion rotation = garageTransform.Rotation();
             float3 bounds = component._bounds;
             float grid = BuildingModConfig.GridSize;
             float3 step = math.abs(math.rotate(rotation, new float3(grid, grid, grid)));
             step = math.max(step, new float3(0.0001f, 0.0001f, 0.0001f));
 
+            // Use the original part bounds (not ECS-modified ones) for the phase anchor so the
+            // formula stays idempotent whether the game path or this fallback ran first.
             float3 offset = math.abs(math.rotate(rotation, 0.5f * bounds));
             float3 position = garageTransform.Position();
             float3 snapped = math.round((position - offset) / step) * step + offset;

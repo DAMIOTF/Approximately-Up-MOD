@@ -116,13 +116,7 @@
     <Compile Include="ItemListController.UI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <!-- Mods\BuildingGridMod -->
-    <Compile Include="Mods\BuildingGridMod\BuildingModConfig.cs" />
-    <Compile Include="Mods\BuildingGridMod\BuildingRuntimeOverrides.cs" />
     <Compile Include="Mods\BuildingGridMod\BurstCompatibility.cs" />
-    <Compile Include="Mods\BuildingGridMod\GridSnappingPatch.cs" />
-    <Compile Include="Mods\BuildingGridMod\ModUI.cs" />
-    <Compile Include="Mods\BuildingGridMod\PatchDiagnostics.cs" />
-    <Compile Include="Mods\BuildingGridMod\PlacementCollisionPatch.cs" />
     <!-- Mods\GameOverridesMod -->
     <Compile Include="Mods\GameOverridesMod\GameOverridesSystem.cs" />
     <Compile Include="Mods\GameOverridesMod\GameOverridesUI.cs" />
