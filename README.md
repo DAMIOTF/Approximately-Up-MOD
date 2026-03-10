@@ -1,6 +1,6 @@
 # Approximately Up MOD
 
-> **Current version: v2.3.0** — tested against game build [34252973](https://steamdb.info/app/4396220/history/?changeid=34252973)
+> **Current version: v2.4.0** — tested against game build [34326956](https://steamdb.info/app/4396220/history/?changeid=34252973) 10.03.2026
 
 A MelonLoader mod for **Approximately Up (Demo)** that unlocks hidden game content and adds quality-of-life overrides through an in-game GUI panel (toggle with **F10**).
 
@@ -158,5 +158,6 @@ Output DLL: `bin/Release/ApproximatelyUpMOD.dll`
 
 =======
 >>>>>>> 6efaa5a (Wireless transmitter: auto-shrink font for 3- and 4-digit channel numbers via CRPText3D._maxWidth)
+
 
 
